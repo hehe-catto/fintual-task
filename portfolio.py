@@ -26,7 +26,9 @@ class Portfolio:
         self.allocation = allocation
         self.stocks_storage = stocks_storage
         self.total_per_stock = {}
+        # generate initial stocks number
         self.generate_stocks_number(max_number_stocks)
+        # rebalance portfolio
         self.rebalance()
 
     def generate_stocks_number(self, max_number_stocks: int):
@@ -43,7 +45,7 @@ class Portfolio:
         """Rebalance the number of stocks based on the assigned allocation, considering the latest price and the current number of stocks.
 
         Returns:
-            dict: result that indicates per action the number of stocks to sell or buy 
+            dict: result that indicates per action the number of stocks to sell or buy
         """
         result = {}
         # calculate the the current value of the portfolio
@@ -66,7 +68,7 @@ class Portfolio:
             )
             # update stocks number
             self.total_per_stock[symbol] = stocks_number
-            
+
             # results
             if actual_participation == needed_participation:
                 continue
